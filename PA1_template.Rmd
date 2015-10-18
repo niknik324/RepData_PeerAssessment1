@@ -98,8 +98,14 @@ perdayMedianF <- median(perdayF$steps)
 ```{r, echo=TRUE}
 activityFIXED$weekday <- weekdays(as.Date(activityFIXED$date))
 for (row in 1:17568) {if (activityFIXED[row,]$weekday == "Sunday" | activityFIXED[row,]$weekday == "Saturday"|activityFIXED[row,]$weekday == "воскресенье"|activityFIXED[row,]$weekday == "суббота") { activityFIXED[row,]$weekday <- 'weekend'} else {activityFIXED[row,]$weekday <- 'weekday'} }
+
+meanPerIntervalWD <- aggregate(steps ~ interval, data = activityFIXED[activityFIXED$weekday == 'weekday',], mean)
+meanPerIntervalWE <- aggregate(steps ~ interval, data = activityFIXED[activityFIXED$weekday == 'weekend',], mean)
+
 par(mfcol=c(2,1))
 plot(meanPerIntervalWD, type = 'l')
 plot(meanPerIntervalWE, type = 'l')
 
 ```
+
+Yes, they are different.

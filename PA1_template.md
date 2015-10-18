@@ -118,8 +118,27 @@ hist(perdayF$steps, xlab = 'steps per day', main = 'Histogram of steps per day')
 perdayMeanF <- mean(perdayF$steps)
 perdayMedianF <- median(perdayF$steps)
 ```
-**Mean:** 10766
 
-**Median:** 1.0766189\times 10^{4}
+
+**Mean:** 10766 
+
+**Median:** 10766
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+```r
+activityFIXED$weekday <- weekdays(as.Date(activityFIXED$date))
+for (row in 1:17568) {if (activityFIXED[row,]$weekday == "Sunday" | activityFIXED[row,]$weekday == "Saturday"|activityFIXED[row,]$weekday == "воскресенье"|activityFIXED[row,]$weekday == "суббота") { activityFIXED[row,]$weekday <- 'weekend'} else {activityFIXED[row,]$weekday <- 'weekday'} }
+
+meanPerIntervalWD <- aggregate(steps ~ interval, data = activityFIXED[activityFIXED$weekday == 'weekday',], mean)
+meanPerIntervalWE <- aggregate(steps ~ interval, data = activityFIXED[activityFIXED$weekday == 'weekend',], mean)
+
+par(mfcol=c(2,1))
+plot(meanPerIntervalWD, type = 'l')
+plot(meanPerIntervalWE, type = 'l')
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
+
+Yes, they are different.

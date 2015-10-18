@@ -1,4 +1,4 @@
-### Sorry for now SHA-1 - had problems with git last moment((((
+### Sorry for now SHA-1 - had problems with git last moment(((( well, not problems, just wrong home dir...
 
 
 ## Introduction
