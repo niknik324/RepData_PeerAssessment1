@@ -1,3 +1,6 @@
+### Sorry for now SHA-1 - had problems with git last moment((((
+
+
 ## Introduction
 
 It is now possible to collect a large amount of data about personal
